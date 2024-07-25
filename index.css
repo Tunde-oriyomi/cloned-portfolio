@@ -11,7 +11,7 @@
     --fs-tertiary-heading: 1.2rem;
     --fs-paragraph: 1.1rem;
     --fs-btn: 1.2rem;
-    --box-shadow: 0 .5rem .7rem;
+    --box-shadow: 0 .3rem .7rem;
     --scale-img: 1.2;
     --scale-logo: 1.1;
     --transition: all 300ms ease-in-out;
@@ -63,9 +63,52 @@ body {
     line-height: 1.5;
 }
 
+/* styling the navigation button */
+.btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .8rem;
+    background: var(--primary-btn-clr);
+    color: var(--clr-btn);
+}
+
+/* resizing the image in the button and removing its bg */
+.btn img {
+    width: 1rem;
+    background: transparent;
+}
+
 .sections {
     margin-inline: 8%;
     margin-block: 5rem;
+}
+
+/*  changing some custom properties for small and medium screens, respectively */
+@media (max-width: 50em) {
+    :root {
+        --fs-primary-heading: 2rem;
+        --fs-secondary-heading: 1.5rem;
+        --fs-tertiary-heading: 1rem;
+    }
+
+    .sections {
+        margin-inline: 1%;
+        margin-block: 5rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --fs-primary-heading: 1.5rem;
+        --fs-secondary-heading: 1rem;
+        --fs-tertiary-heading: 1rem;
+    }
+
+    .sections {
+        margin-inline: 1%;
+        margin-block: 5rem;
+    }
 }
 
 button {
@@ -75,28 +118,32 @@ button {
     font-weight: 700;
     font-size: .8rem;
     cursor: pointer;
-    transform: var(--transition);
+    transition: var(--transition);
 }
 
 button:hover {
     scale: 1.1;
 }
 
+/* setting up the dangling arrow */
 .up-arrow {
     position: fixed;
     color: white;
-    bottom: 2rem;
-    right: 3rem;
+    bottom: 3rem;
+    right: 1.5rem;
     border-radius: 50%;
     background: var(--cta-btn-clr);
     padding: 1rem;
+    transition: var(--transition);
     animation: bounce 1s infinite;
-
-    img {
-        width: 1.5rem;
-    }
 }
 
+/* targeting the image */
+.up-arrow img {
+    width: 1.5rem;
+}
+
+/* setting up the navigation bar */
 .navbar {
     margin-top: 1rem;
     display: flex;
@@ -104,19 +151,18 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     margin-inline: 5%;
+}
 
-    button {
-        display: flex;
-        align-items: center;
-        gap: .8rem;
-        background: var(--primary-btn-clr);
-        color: var(--clr-btn);
+/* hiding the hamburger menu in large screen size */
+.navbar .mobile-nav-toggle {
+    display: none;
+    background: transparent;
+    color: white;
+}
 
-        img {
-            width: 1rem;
-            background: transparent;
-        }
-    }
+.navbar .mobile-nav-toggle img {
+    width: 2rem;
+    background: transparent;
 }
 
 .logo {
@@ -134,34 +180,99 @@ button:hover {
     gap: 2rem;
 }
 
-.navlinks>li {
+.navlinks > li {
     font-size: .9rem;
+}
 
-    a {
-        text-decoration: none;
-        color: var(--border-color);
-        opacity: 0.6;
-        transition: var(--transition);
+.navlinks > li a {
+    text-decoration: none;
+    color: var(--border-color);
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.navlinks > li a:hover {
+    opacity: 1;
+    color: var(--cta-btn-clr);
+}
+
+/* for small screens */
+@media (max-width: 1024px) {
+    .up-arrow, .navbar, .sections {
+        margin-inline: 0;
     }
 
-    a:hover {
+    body {
+        margin-inline: 2%;
+    }
+
+    header {
+        position: relative;
+        justify-content: space-between;
+    }
+
+    .btn {
+        display: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .intro-btn .small-btn {
+        display: block;
+        margin-top: -1rem;
+    }
+
+    .navlinks {
+        flex-direction: column;
+        align-items: center;
+        padding: 5rem;
+    }
+
+    .primary-navigation {
+        position: absolute;
+        z-index: 1;
+        display: none;
+        right: 0;
+        top: 5rem;
+        background: white;
+        border-radius: var(--border-rad);
+        transition: var(--transition);
+        width: 100%;
+    }
+
+    .navlinks > li {
+        font-size: 1.2rem;
+    }
+
+    .navlinks > li a {
         opacity: 1;
-        color: var(--cta-btn-clr);
+        color: black;
+    }
+
+    .icon-close {
+        display: none;
+    }
+
+    .navbar .mobile-nav-toggle {
+        display: block;
+        cursor: pointer;
     }
 }
 
+
 .hero {
     margin-block: 10rem;
-    margin-inline: 15%;
+    margin-inline: 14%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10rem;
     place-items: center;
 }
 
-.hero>img {
-    width: 25rem;
+.hero > img {
+    width: min(25rem, 100%);
     border-radius: 1rem;
+    align-items: center;
 }
 
 .intro:first-child {
@@ -169,7 +280,7 @@ button:hover {
     font-size: 1.5rem;
 }
 
-.intro h2>.span {
+.intro h2 > .span {
     font-weight: 300;
 }
 
@@ -185,13 +296,29 @@ button:hover {
     color: var(--clr-btn);
 }
 
+.intro > .intro-btn {
+    display: flex;
+    flex-direction: column;
+    width: 8rem;
+}
+
+.intro > .intro-btn button {
+    width: 100%;
+}
+
+.small-btn {
+    display: none;
+}
+
 .intro .updating-text {
     color: var(--cta-btn-clr);
     font-weight: 500;
     text-transform: capitalize;
     position: relative;
+    text-decoration: underline white;
 }
 
+/* using psuedo element to typewright the text */
 .updating-text::before {
     content: "";
     position: absolute;
@@ -201,51 +328,66 @@ button:hover {
     top: 0;
     left: 0;
     border-left: .2rem solid var(--cta-btn-clr);
-    animation: animate 4s steps(12) infinite;
+    animation: animate 2s steps(12) infinite;
 }
 
 .social-icons {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: .5rem;
     align-items: center;
 }
 
-.social-icons>a {
-    width: 2rem;
+.social-icons > a {
+    background: hsl(240, 15%, 13%);
     display: flex;
     justify-content: center;
     margin-top: 1rem;
     transition: var(--transition);
 }
 
-.social-icons>* {
-    background: hsl(240, 17%, 17%);
+.social-icons > * {
     padding: 0.5rem;
     border-radius: 50%;
 }
 
-.social-icons img {
-    background: white;
-    width: 1.8rem;
-    border-radius: 50%;
-}
-
-.social-icons a:hover{
+.social-icons a:hover {
     scale: 1.2rem;
-    background: white;
+    background: hsl(240, 11%, 11%);
 }
 
-.projects {
-    img {
-        height: 90%;
-        width: 100%;
-        transition: var(--transition);
+/* for small screens */
+@media (max-width: 50em) {
+    .hero {
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        margin-inline: 1%;
+        margin-block: 1rem;
     }
+
+    .intro:first-child {
+        font-size: 1rem;
+    }
+}
+
+/* for medium screens */
+@media (max-width: 1024px) {
+
+    .intro:first-child {
+        font-size: 1rem;
+    }
+}
+
+.projects img {
+    height: 90%;
+    width: 100%;
+    transition: var(--transition);
 }
 
 .projects .works {
     display: grid;
+    /* i want each projects to have same size */
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
 }
@@ -253,13 +395,11 @@ button:hover {
 .projects .works .work {
     display: grid;
     grid-template-rows: 1fr;
-
     border: .1rem solid var(--border-color);
     border-radius: var(--border-rad);
 }
 
 .projects .works .work .desc-section {
-    /* margin-top: 1rem; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -280,65 +420,105 @@ button:hover {
     padding: var(--padding);
 }
 
-.skills {
-    /* margin-top: 2rem; */
+/* for small screens */
+@media (max-width: 50em) {
+    .projects img {
+        width: 100%;
+        transition: var(--transition);
+    }
 
-    img {
-        width: 5rem;
+    .projects .works {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .projects .works .work, img {
+        height: 10%;
     }
 }
 
-.frontend, .backend, .gaming {
+.skills {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-block: 1rem;
+    margin-inline: 5%;
+}
+
+.skills img {
+    width: 5rem;
 }
 
 .skill {
-    --clr-shadow:white;
-    display: grid;
-    grid-template-rows: 1fr;
-    place-items: center;
+    /* created a variable so i can update just the color of the shadow */
+    --clr-shadow: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    margin-block: 1rem;
-    box-shadow: var(--box-shadow) var(--clr-shadow);
     gap: 1rem;
-    width: 90%;
+    box-shadow: var(--box-shadow) var(--clr-shadow);
     transition: var(--transition);
-
-    img:hover {
-        scale: 1.05;
-    }
 }
 
-.skills >.frontend>:nth-child(1) {
+.skill img:hover {
+    scale: 1.05;
+}
+
+.skill span {
+    margin-bottom: .5rem;
+}
+
+.skills > :nth-child(1) {
     --clr-shadow: orangered;
 }
-.skills >.frontend>:nth-child(2) {
+
+.skills > :nth-child(2) {
     --clr-shadow: rgb(47, 143, 252);
 }
-.skills >.frontend>:nth-child(3) {
+
+.skills > :nth-child(3) {
     --clr-shadow: yellow;
 }
-.skills >.frontend>:nth-child(4) {
+
+.skills > :nth-child(4) {
     --clr-shadow: rgb(3, 108, 228);
 }
-.skills >.backend>:nth-child(1) {
+
+.skills > :nth-child(5) {
     --clr-shadow: hsl(192, 95%, 39%);
 }
-.skills >.backend>:nth-child(2) {
+
+.skills > :nth-child(6) {
     --clr-shadow: hsl(120, 87%, 43%);
 }
-.skills >.backend>:nth-child(3) {
+
+.skills > :nth-child(7) {
     --clr-shadow: hsl(120, 81%, 65%);
 }
-.skills >.backend>:nth-child(4) {
+
+.skills > :nth-child(8) {
     --clr-shadow: #fff;
 }
-.skills >.gaming>:nth-child(1) {
+
+.skills > :nth-child(9) {
     --clr-shadow: rgb(241, 30, 30);
+}
+
+/* for small screens */
+@media (max-width: 50em) {
+    .skills {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        place-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .skill {
+        grid-auto-rows: 1fr 1fr;
+    }
 }
 
 .form-container {
@@ -346,17 +526,17 @@ button:hover {
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
+}
 
-    button {
-        background: var(--cta-btn-clr);
-        color: white;
-        padding: var(--padding);
-
-    }
+.form-container button {
+    background: var(--cta-btn-clr);
+    color: white;
+    padding: var(--padding);
 }
 
 .form-container input,
 .form-container textarea {
+    color: white;
     place-items: center;
     width: 30rem;
     background: transparent;
@@ -366,6 +546,14 @@ button:hover {
     border-radius: var(--border-rad);
 }
 
+@media (max-width: 50em) {
+    .form-container input,
+    .form-container textarea {
+        width: 70%;
+    }
+}
+
+/* animations for updating text */
 @keyframes animate {
     40%, 60% {
         left: 100%;
@@ -375,11 +563,12 @@ button:hover {
     }
 }
 
+/* animation for the bouncing arrow button */
 @keyframes bounce {
     0% {
         transform: translateY(1rem);
     }
-    100%{
+    100% {
         transform: translateY(0);
     }
 }

@@ -14,42 +14,50 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+
+    <!-- installing fontawesome. Kinda... -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+    <!-- linking my stylesheet -->
     <link rel="stylesheet" href="index.css">
-    <script src="script.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>codewith_lyontech</title>
 </head>
 
 <body>
-    <button class="up-arrow">
-        <img src="./Assets/up-arrow.png">
-    </button>
-    <div class="navbar">
+    <a href="#header"><button class="up-arrow">
+            <img src="./Assets/up-arrow.png">
+        </button></a>
+    <header class="navbar" id="header">
         <h1 class="logo">
             @codewithlyon
         </h1>
-        <div>
-            <ul id="primary-navigation" class="navlinks">
+        <div class="mobile-nav-toggle active" aria-controls="primary-navigation" aria-expanded="false" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars" id="open-icon" style="color: #ffffff; font-size: 2rem;"></i>
+            <i class="fa-solid fa-xmark" id="close-icon" style="color: #ffffff; font-size: 2rem; display: none;"></i>
+        </div>
+        <nav class="primary-navigation" id="primary-navigation">
+            <ul aria-label="primary-navigation" class="navlinks" role="list">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Project</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
-        <button>
+        </nav>
+        <button class="btn">
             <p>Download CV</p>
             <img src="./Assets/downloads.png" alt="">
         </button>
-    </div>
+    </header>
 
     <div class="hero" id="home">
         <div class="intro">
             <h2>Hi, I am <br>
                 <span style="margin-top: -1rem;" class="primary-heading">tunde oriyomi</span> <br>
-                <span class="span">And I am </span>
-                <span class="updating-text">developer</span>
+                <span class="span">And I am a</span>
+                <span class="updating-text" id="updating-text">developer</span>
             </h2>
             <p class="paragraph">
                 Seeking a challenging role as a web developer where I can utilize my expertise in front-end and back-end
@@ -58,11 +66,20 @@
                 satisfaction
             </p>
             <div class="social-icons">
-                <a href=""><img src="./Assets/linkedin.png" aria-label="linkedin"></a>
-                <a href=""><img src="./Assets/twitter.png" aria-label="x twiitter"></a>
-                <a href=""><img src="./Assets/github.png" aria-label="github"></a>
+                <a href="" aria-label="linkedin">
+                    <i class="fa-brands fa-linkedin" style="color: white; font-size: 2rem; padding: .2rem;"></i>
+                </a>
+                <a href="x.com/Tundelyon20" aria-label="twitter">
+                    <i class="fa-brands fa-square-x-twitter" style="color: white; font-size: 2rem; padding: .2rem;"></i>
+                </a>
+                <a href="https://github.com/Tunde-oriyomi/cloned-portfolio" aria-label="github">
+                    <i class="fa-brands fa-github"  style="color: white; font-size: 2rem; padding: .2rem;"></i>
+                </a>
             </div>
-            <a href=""><button>Contact me</button></a>
+            <div class="intro-btn">
+                <a href="wa.me/2348100730011"><button>Contact me</button></a>
+                <a href="#" class="small-btn"><button>Resume</button></a>
+            </div>
         </div>
         <img src="./Assets/me.jpg" alt="">
     </div>
@@ -118,8 +135,8 @@
                 <img src="./Assets/todolist.png" alt="">
                 <div class="desc-section">
                     <span class="tertiary-heading">to do appplication</span> <br><br>
-                        <span style="text-decoration: none; font-size: 0.9rem;" class="paragraph">Simple Todo App adding
-                            Todos using JavaScript</span><br><br>
+                    <span style="text-decoration: none; font-size: 0.9rem;" class="paragraph">Simple Todo App adding
+                        Todos using JavaScript</span><br><br>
                     <div class="btn_section">
                         <button>Demo</button>
                         <button>Code</button>
@@ -134,49 +151,43 @@
         <p class="paragraph">These are the technologies i've worked with</p>
 
         <div class="skills">
-            <div class="frontend">
-                <div class="skill">
-                    <img src="./Assets/html.png" aria-label="HTML">
-                    <span class="paragraph">HTML</span>
-                </div>
-                <div class="skill">
-                    <img src="./Assets/css-logo.png" aria-label="CSS">
-                    <span class="paragraph">CSS</span>
-                </div>
-                <div class="skill">
-                    <img src="./Assets/js-logo.png" aria-label="JavaScript">
-                    <span class="paragraph">JavaScript</span>
-                </div>
-                <div class="skill">
-                    <img src="./Assets/react-logo.png" aria-label="react">
-                    <span class="paragraph">React</span>
-                </div>
+            <div class="skill">
+                <img src="./Assets/html.png" aria-label="HTML">
+                <span class="paragraph">HTML</span>
+            </div>
+            <div class="skill">
+                <img src="./Assets/css-logo.png" aria-label="CSS">
+                <span class="paragraph">CSS</span>
+            </div>
+            <div class="skill">
+                <img src="./Assets/js-logo.png" aria-label="JavaScript">
+                <span class="paragraph">JavaScript</span>
+            </div>
+            <div class="skill">
+                <img src="./Assets/react-logo.png" aria-label="react">
+                <span class="paragraph">React</span>
             </div>
 
-            <div class="backend">
-                <div class="skill">
-                    <img src="./Assets/tailwind.png" aria-label="tailwind">
-                    <span class="paragraph">Tailwind</span>
-                </div>
-                <div class="skill">
-                    <img src="./Assets/node.png" aria-label="Node js">
-                    <span class="paragraph">Node Js</span>
-                </div>
-                <div class="skill">
-                    <img src="./Assets/mongo.png" aria-label="mongoDB">
-                    <span class="paragraph">MongoDB</span>
-                </div>
-                <div class="skill">
-                    <img src="./Assets/express.png" aria-label="express">
-                    <span class="paragraph">Express</span>
-                </div>
+            <div class="skill">
+                <img src="./Assets/tailwind.png" aria-label="tailwind">
+                <span class="paragraph">Tailwind</span>
+            </div>
+            <div class="skill">
+                <img src="./Assets/node.png" aria-label="Node js">
+                <span class="paragraph">Node Js</span>
+            </div>
+            <div class="skill">
+                <img src="./Assets/mongo.png" aria-label="mongoDB">
+                <span class="paragraph">MongoDB</span>
+            </div>
+            <div class="skill">
+                <img src="./Assets/express.png" aria-label="express">
+                <span class="paragraph">Express</span>
             </div>
 
-            <div class="gaming">
-                <div class="skill">
-                    <img src="./Assets/java.png" aria-label="Java">
-                    <span class="paragraph">Java</span>
-                </div>
+            <div class="skill">
+                <img src="./Assets/java.png" aria-label="Java">
+                <span class="paragraph">Java</span>
             </div>
         </div>
     </div>
@@ -192,6 +203,8 @@
             <button class="secondary-paragraph" type="submit">Let'a talk</button>
         </form>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
