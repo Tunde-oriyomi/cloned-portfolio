@@ -203,7 +203,7 @@ button:hover {
     }
 
     body {
-        margin-inline: 2%;
+        margin-inline: 5%;
     }
 
     header {
@@ -218,7 +218,7 @@ button:hover {
     }
 
     .intro-btn .small-btn {
-        display: block;
+        display: none;
         margin-top: -1rem;
     }
 
