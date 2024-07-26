@@ -328,7 +328,7 @@ button:hover {
     top: 0;
     left: 0;
     border-left: .2rem solid var(--cta-btn-clr);
-    animation: animate 2s steps(12) infinite;
+    animation: animate 4.5s steps(9) infinite;
 }
 
 .social-icons {
